@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Prediksi</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+</head>
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1"></span>
+</nav>
+<div class="container contact-form">
+            <div class="contact-image">
+                <img src="static/imgs/leaves.png" alt="rocket_contact"/>
+            </div>
+            <form action = "{{url_for('predict')}}" method="POST">
+                <fieldset>
+                <h3>Klasifikasi Empon-Empon Berdasarkan Sensor E-Nose</h3>
+               <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="TGS 813">Sensor TGS 813 (Volt)</label>
+							<input type="number" class="form-control" id="TGS 813" name="TGS 813" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="TGS 2611">Sensor TGS 2611 (Volt)</label>
+								<input type="number" class="form-control" id="TGS 2611" name="TGS 2611"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="MQ136">Sensor MQ136 (Volt)</label>
+							<input type="number" class="form-control" id="MQ136" name="MQ136"  required>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-info" type="submit" value="Result">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h5 style="color: rgb(0, 56, 242);">PREDIKSI</h5>
+                            <div class="collection" role="alert">
+                            </div>
+                            <div class="card-image waves-effect waves-block waves-light">
+
+                                {% if prediction == [0] %}
+                                    <img src="static/imgs/jahe.jpeg" width="400px" height="200px">
+                                    <p>Hasil Prediksi : Tanaman Jahe</p>
+                                    <div class="detail">
+                                        <p>Sensor TGS 813  = {{ TGS_813 }}</p>
+                                        <p>Sensor TGS 2611 = {{ TGS_2611 }}</p>
+                                        <p>Sensor MQ 136   = {{ MQ136 }}</p>
+                                    </div>
+
+                                    {% elif prediction == [1]  %}
+                                    <img src="static/imgs/kencur.jpg" width="400px" height="200px">
+                                    <p>Hasil Prediksi : Tanaman Kencur</p>
+                                    <div class="detail">
+                                        <p>Sensor TGS 813  = {{ TGS_813 }}</p>
+                                        <p>Sensor TGS 2611 = {{ TGS_2611 }}</p>
+                                        <p>Sensor MQ 136   = {{ MQ136 }}</p>
+                                    </div>
+
+                                    {% elif prediction == [2]  %}
+                                    <img src="static/imgs/kunyit.jpeg"width="400px" height="200px" >
+                                    <p>Hasil Prediksi : Tanaman Kunyit</p>
+                                    <div class="detail">
+                                        <p>Sensor TGS 813  = {{ TGS_813 }}</p>
+                                        <p>Sensor TGS 2611 = {{ TGS_2611 }}</p>
+                                        <p>Sensor MQ 136   = {{ MQ136 }}</p>
+                                    </div>
+
+                                    {% elif prediction == [3]  %}
+                                    <img src="static/imgs/temulawak.jpg"width="400px" height="200px" >
+                                    <p>Hasil Prediksi : Tanaman Temulawak</p>
+                                    <div class="detail">
+                                        <p>Sensor TGS 813  = {{ TGS_813 }}</p>
+                                        <p>Sensor TGS 2611 = {{ TGS_2611 }}</p>
+                                        <p>Sensor MQ 136   = {{ MQ136 }}</p>
+                                    </div>
+
+                                    {% else %}
+                                        <p></p>
+                                {% endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            </form>
+</div>
+</body>
+</html>
