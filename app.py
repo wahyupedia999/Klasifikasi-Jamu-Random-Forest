@@ -11,6 +11,10 @@ app = Flask(__name__)
 def index():
 	return render_template("klasifikasi jamu.html")
 
+@app.route('/klasifikasi')
+def klasifikasi():
+	return render_template("test-ui.html")
+
 
 @app.route('/',methods=["POST"])
 def predict():
@@ -37,8 +41,8 @@ def predict():
 if __name__ == '__main__':
 #Run the application
     #Develop Mode
-    app.run()
+    #app.run()
     
     #///////////
     #Debug Mode
-    #app.run(debug=True, use_reloader=True)
+    app.run(debug=True, use_reloader=True)
